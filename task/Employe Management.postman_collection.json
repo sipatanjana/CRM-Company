@@ -1,0 +1,785 @@
+{
+	"info": {
+		"_postman_id": "dd77b536-56bb-4803-8285-2b430dc64368",
+		"name": "Employe Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17292576",
+		"_collection_link": "https://lunar-desert-589237.postman.co/workspace/5ecb9a25-bbbc-4ebb-84f7-d7901d1149e1/collection/17292576-dd77b536-56bb-4803-8285-2b430dc64368?action=share&source=collection_link&creator=17292576"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"token-jwt\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test@example.com",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "badrajaya.manager.company@mail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "badrajaya.manager.company@mail.com",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{employe-management}}/api/auth",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{employe-management}}/api/auth/user",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{employe-management}}/api/auth/logout",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"token-jwt\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{employe-management}}/api/auth/refresh",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "All Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{employe-management}}/api/company",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{employe-management}}/api/company/1",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Badra INC",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "company@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{employe-management}}/api/company",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Badrajaya1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "company@mail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone_number",
+									"value": "00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{employe-management}}/api/company/1",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{employe-management}}/api/company/3",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manager",
+			"item": [
+				{
+					"name": "All Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{employe-management}}/api/manager",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"manager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{employe-management}}/api/manager/4",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"manager",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Tukino",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "address",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "00",
+									"type": "text"
+								},
+								{
+									"key": "company_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "timoho@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "timoho@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{employe-management}}/api/manager",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"manager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Any",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Tukino Baharudin",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "address",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone_number",
+									"value": "00",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{employe-management}}/api/manager/4",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"manager",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update own data",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Tukino Manager Produksi",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "address",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone_number",
+									"value": "00",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{employe-management}}/api/manager",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"manager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{employe-management}}/api/manager/2",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"manager",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employes",
+			"item": [
+				{
+					"name": "All Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{employe-management}}/api/employe",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"employe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{employe-management}}/api/employe/7",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"employe",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Tabran del",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "address",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "00",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "timodadel57@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "timoho1@mail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{employe-management}}/api/employe",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"employe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Tukino Baharudin",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "address",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone_number",
+									"value": "00",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{employe-management}}/api/employe/7",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"employe",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{employe-management}}/api/employe/8",
+							"host": [
+								"{{employe-management}}"
+							],
+							"path": [
+								"api",
+								"employe",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token-jwt}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
