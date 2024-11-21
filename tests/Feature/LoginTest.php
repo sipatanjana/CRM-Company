@@ -1,17 +1,8 @@
 <?php
 
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 use function Pest\Laravel\{post, get, assertAuthenticated};
-
-beforeEach(function () {
-    $this->seed();
-});
-
-uses(RefreshDatabase::class);
 
 test('login dengan data yang salah', function () {
     $response = post('/api/auth', [

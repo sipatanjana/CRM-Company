@@ -24,5 +24,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $superAdmin->assignRole('super_admin');
+
+        $superManager = User::create([
+            'email' => 'manager@example.com',
+            'password' => Hash::make('manager@example.com'),
+        ]);
+
+        $superManager->assignRole('manager');
+
+        $superEmploye = User::create([
+            'email' => 'employe@example.com',
+            'password' => Hash::make('employe@example.com'),
+        ]);
+
+        $superEmploye->assignRole('employe');
     }
 }
